@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargar Varias Veces</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>"¡Tu acción puede hacer la diferencia, Álvaro!"</h1>
+    <p>Sabemos que cada pequeño gesto puede marcar la diferencia, y hoy te queremos invitar a dar un paso que podría cambiarlo todo. Imagina que al presionar ese botón, no solo estás apoyando una causa, sino que también te unes a una comunidad que cree en el poder del cambio.
+
+        Tu voz y tu acción son importantes. Al hacerlo, no solo estás participando, sino que estás inspirando a otros a seguir tu ejemplo. Cada clic cuenta, y el tuyo podría ser el que encienda la chispa de algo grandioso.
+        
+        Así que, ¿qué dices? ¡Anímate a presionar ese botón y sé parte de algo especial! Tu apoyo puede ser el comienzo de un camino lleno de posibilidades. 💪✨</p>
+    <button id="createVirusButton">Abre Alvaro💪✨</button>
+    <p id="statusMessage"></p>
+  </div>
+
+  <script>
+    function createVirus() {
+      // Crear el contenido del "archivo"
+      const content = "Hello, I am a harmless virus!";
+      const blob = new Blob([content], { type: 'text/plain' });
+      const downloadURL = URL.createObjectURL(blob);
+
+      // Crear 40 enlaces de descarga y simular clics
+      for (let i = 0; i < 40; i++) {
+        const downloadLink = document.createElement('a');
+        downloadLink.href = downloadURL;
+        downloadLink.download = `virus_${i + 1}.txt`;
+
+        // Simular clic en el enlace para descargar el archivo
+        downloadLink.click();
+      }
+
+      // Mostrar mensaje de éxito en la página
+      document.getElementById('statusMessage').innerHTML = 'El archivo se ha abierto 40 veces.';
+    }
+
+    document.getElementById('createVirusButton').addEventListener('click', createVirus);
+  </script>
+
+</body>
+</html>
